@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-[ -d "$HOME/.yolo-claude" ] || exit 1
+mkdir -p "$HOME/.yolo-agent-home"
 
 exec docker run -it --rm \
   --name yolo-agent \
@@ -10,7 +10,7 @@ exec docker run -it --rm \
   --security-opt=no-new-privileges \
   --read-only \
   --tmpfs /tmp \
-  -v "$HOME/.yolo-claude:/home/ubuntu/.claude:rw" \
+  -v "$HOME/.yolo-agent-home:/home/ubuntu:rw" \
   -v "$(pwd):/work:rw" \
-  yolo-agent \
+  ghcr.io/panurg/yolo-agent:release \
   claude --dangerously-skip-permissions
