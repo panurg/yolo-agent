@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+apt-get update
+apt-get install -y --no-install-recommends \
+    curl ca-certificates \
+    build-essential
+rm -rf /var/lib/apt/lists/*
+
+install -d -o ubuntu -g ubuntu /work
+curl -fsSL https://claude.ai/install.sh | runuser -u ubuntu -- bash

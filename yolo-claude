@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+[ -d "$HOME/.yolo-claude" ] || exit 1
+
+exec docker run -it --rm \
+  --name yolo-agent \
+  --hostname yolo-agent \
+  --user "$(id -u):$(id -g)" \
+  --cap-drop=ALL \
+  --security-opt=no-new-privileges \
+  --read-only \
+  --tmpfs /tmp \
+  -v "$HOME/.yolo-claude:/home/ubuntu/.claude:rw" \
+  -v "$(pwd):/work:rw" \
+  yolo-agent \
+  claude --dangerously-skip-permissions
