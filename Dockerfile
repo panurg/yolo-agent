@@ -13,7 +13,7 @@ RUN apt-get update \
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-        git gh \
+        git gh fossil \
         jq \
  && rm -rf /var/lib/apt/lists/*
 
