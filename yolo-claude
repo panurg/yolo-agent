@@ -13,4 +13,4 @@ exec docker run -it --rm \
   -v "$HOME/.yolo-agent-home:/home/ubuntu:rw" \
   -v "$(pwd):/work:rw" \
   ghcr.io/panurg/yolo-agent:release \
-  claude --dangerously-skip-permissions
+  claude --dangerously-skip-permissions "$@"
