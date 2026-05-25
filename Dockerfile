@@ -7,6 +7,7 @@ COPY claude-code.list /etc/apt/sources.list.d/claude-code.list
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+        ca-certificates \
         build-essential \
         git gh \
  && rm -rf /var/lib/apt/lists/*
