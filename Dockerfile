@@ -2,10 +2,8 @@ FROM ubuntu:resolute-20260421
 ARG DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ubuntu
 
-ADD --chmod=0644 https://downloads.claude.ai/keys/claude-code.asc \
-    /etc/apt/keyrings/claude-code.asc
-RUN echo "deb [signed-by=/etc/apt/keyrings/claude-code.asc] https://downloads.claude.ai/claude-code/apt/stable stable main" \
-      > /etc/apt/sources.list.d/claude-code.list
+COPY --chmod=0644 claude-code.asc /etc/apt/keyrings/claude-code.asc
+COPY claude-code.list /etc/apt/sources.list.d/claude-code.list
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
